@@ -15,22 +15,22 @@ variable "VPC_cidr_block" {
 }
 
 variable "public01_cidr_block" {
-    default = "10.1.1.0/16"
+    default = "10.1.1.0/24"
 }
 variable "public02_cidr_block" {
-    default = "10.1.2.0/16"
+    default = "10.1.2.0/24"
 }
 variable "public03_cidr_block" {
-    default = "10.1.3.0/16"
+    default = "10.1.3.0/24"
 }
 variable "private01_cidr_block" {
-    default = "10.1.4.0/16"
+    default = "10.1.4.0/24"
 }
 variable "private02_cidr_block" {
-    default = "10.1.5.0/16"
+    default = "10.1.5.0/24"
 }
 variable "private03_cidr_block" {
-    default = "10.1.6.0/16"
+    default = "10.1.6.0/24"
 }
 
 variable "AMIS" {
