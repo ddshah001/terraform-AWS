@@ -4,6 +4,35 @@ variable "AWS_REGION" {
     default = "us-east-2"
 }
 
+variable "AWS_AZ" {
+    default = {
+        us-east-2 = ["us-east-2a","us-east-2b","us-east-2c"]
+    }
+}
+
+variable "VPC_cidr_block" {
+    default = "10.1.0.0/16"
+}
+
+variable "public01_cidr_block" {
+    default = "10.1.1.0/16"
+}
+variable "public02_cidr_block" {
+    default = "10.1.2.0/16"
+}
+variable "public03_cidr_block" {
+    default = "10.1.3.0/16"
+}
+variable "private01_cidr_block" {
+    default = "10.1.4.0/16"
+}
+variable "private02_cidr_block" {
+    default = "10.1.5.0/16"
+}
+variable "private03_cidr_block" {
+    default = "10.1.6.0/16"
+}
+
 variable "AMIS" {
     default = {
         us-east-2 = "ami-083ebc5a49573896a"
