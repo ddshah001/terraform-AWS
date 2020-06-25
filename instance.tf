@@ -1,8 +1,3 @@
-resource "aws_key_pair" "firstkey" {
-  key_name = "firstkey"
-  public_key = "${file("${var.PATH_PUBLIC_KEY}")}"
-}
-
 resource "aws_instance" "test01"{
     ami = "${lookup(var.AMIS, var.AWS_REGION)}"
     instance_type = "t2.micro"
