@@ -4,6 +4,7 @@ resource "aws_instance" "test01"{
     key_name = "${aws_key_pair.firstkey.key_name}"
     vpc_security_group_ids = [aws_security_group.public-allow-ssh.id]
     subnet_id = aws_subnet.main-public01.id
+    user_data = data.template_cloudinit_config.cloudinit-example.rendered
     tags = {
       Name = "test01"
     }
@@ -41,7 +42,7 @@ resource "aws_ebs_volume" "ebs_test01_vol01" {
 }
 
 resource "aws_volume_attachment" "ebs_test01_vol01_attachment" {
-  device_name = "/dev/xvdh"
+  device_name  = var.INSTANCE_DEVICE_NAME
   volume_id = aws_ebs_volume.ebs_test01_vol01.id
   instance_id = aws_instance.test01.id
   
