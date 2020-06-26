@@ -4,6 +4,9 @@ resource "aws_instance" "test01"{
     key_name = "${aws_key_pair.firstkey.key_name}"
     vpc_security_group_ids = [aws_security_group.public-allow-ssh.id]
     subnet_id = aws_subnet.main-public01.id
+    tags = {
+      Name = "test01"
+    }
 
     provisioner "file" {
     source      = "script.sh"
@@ -25,6 +28,23 @@ resource "aws_instance" "test01"{
     user        = var.INSTANCE_USERNAME
     private_key = file(var.PATH_PRIVATE_KEY)
     }
+}
+
+resource "aws_ebs_volume" "ebs_test01_vol01" {
+    availability_zone = aws_subnet.main-public01.availability_zone
+    size = 20
+    type = "gp2"
+    tags = {
+      Name = "ebs_test01_vol01"
+    }
+  
+}
+
+resource "aws_volume_attachment" "ebs_test01_vol01_attachment" {
+  device_name = "/dev/xvdh"
+  volume_id = aws_ebs_volume.ebs_test01_vol01.id
+  instance_id = aws_instance.test01.id
+  
 }
 
 output "ip" {

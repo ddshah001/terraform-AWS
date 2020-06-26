@@ -49,7 +49,7 @@ resource "aws_subnet" "main-private01" {
     map_public_ip_on_launch = false
     availability_zone = lookup(var.AWS_AZ, var.AWS_REGION)[0]
     tags = {
-      "name" = "main-private01"
+      Name = "main-private01"
     }
   
 }
@@ -61,7 +61,7 @@ resource "aws_subnet" "main-private02" {
     map_public_ip_on_launch = false
     availability_zone = lookup(var.AWS_AZ, var.AWS_REGION)[1]
     tags = {
-      "name" = "main-private02"
+      Name = "main-private02"
     }
   
 }
@@ -73,7 +73,7 @@ resource "aws_subnet" "main-private03" {
     map_public_ip_on_launch = false
     availability_zone = lookup(var.AWS_AZ, var.AWS_REGION)[2]
     tags = {
-      "name" = "main-private03"
+      Name = "main-private03"
     }
   
 }
@@ -83,7 +83,7 @@ resource "aws_internet_gateway" "main-gw" {
     vpc_id = aws_vpc.main.id
 
     tags = {
-      "name" = "main-gw"
+      Name = "main-gw"
     }
   
 }
@@ -96,7 +96,7 @@ resource "aws_route_table" "main-public" {
     }
 
     tags = {
-      "name" = "main-public"
+      Name = "main-public"
     }
   
 }

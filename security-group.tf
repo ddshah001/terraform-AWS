@@ -23,7 +23,7 @@ resource "aws_security_group" "public-allow-ssh" {
     }
 
     tags = {
-      "name" = "public-allow-ssh"
+      Name = "public-allow-ssh"
     }
   
 }
